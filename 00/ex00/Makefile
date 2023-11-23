@@ -20,13 +20,13 @@ UNAME_S		= $(shell uname -s)
 all: ${NAME}
 
 ${NAME}: ${BUILD_DIR} ${OBJ}
-	$(CC) ${OBJ} ${INCLUDE_SRC} -o ${NAME} $(CFLAGS)
+	$(CC) $(CFLAGS) ${OBJ} ${INCLUDE_SRC} -o ${NAME}
 
 ${BUILD_DIR}:
 	mkdir -p ${BUILD_DIR}
 
 ${BUILD_DIR}/%.o:${SRC_DIR}/%.cpp
-	$(CC) ${INCLUDE_OBJ} -c -o $@ $^ $(CFLAGS)
+	$(CC) $(CFLAGS) ${INCLUDE_OBJ} -c -o $@ $^
 
 archive: ${BUILD_DIR}
 	ar -rc ${NAME}.a ${OBJ}

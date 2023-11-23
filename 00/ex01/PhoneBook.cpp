@@ -1,7 +1,7 @@
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook () {
+Book::Book () {
 	std::cout << "The PhoneBook project! (TM)" << std::endl;
 	std::cout << "Availible commands:" << std::endl;
 	std::cout << "ADD: Adds a user to Phonebook." << std::endl;
@@ -10,40 +10,40 @@ PhoneBook::PhoneBook () {
 	_indx = 0;
 }
 
-Contact	*PhoneBook::get() {
+Contact	*Book::get() {
 	return &_contacts[_indx];
 }
 
-Contact	*PhoneBook::get(int indx) {
+Contact	*Book::get(int indx) {
 	if (indx < 0 || indx >= 8 || _contacts[indx].empty())
 		return (NULL);
 	return &_contacts[indx];
 }
 
-void	PhoneBook::set_fname(std::string fname) {
-	_contacts[_indx].first_name = fname;
+void	Book::set_fname(std::string fname) {
+	_contacts[_indx].set_firstname(fname);
 }
-void	PhoneBook::set_lname(std::string lname) {
-	_contacts[_indx].last_name = lname;
+void	Book::set_lname(std::string lname) {
+	_contacts[_indx].set_lastname(lname);
 }
-void	PhoneBook::set_nickname(std::string nick) {
-	_contacts[_indx].nick_name = nick;
+void	Book::set_nickname(std::string nick) {
+	_contacts[_indx].set_nickname(nick);
 }
-void	PhoneBook::set_phoneNbr(std::string phone) {
-	_contacts[_indx].phone_nbr = phone;
+void	Book::set_phoneNbr(std::string phone) {
+	_contacts[_indx].set_phonenbr(phone);
 }
-void	PhoneBook::set_secret(std::string secret) {
+void	Book::set_secret(std::string secret) {
 	_contacts[_indx].set_secret(secret);
 }
 
-void	PhoneBook::push() {
+void	Book::push() {
 	if (_contacts[_indx].empty())
 	{
 		std::cerr << "Contact is not complete! Cannot add the user to Phonebook. Please re-edit the contact again." << std::endl; 
 		return ;
 	}
 	std::cout << "Added user \"";
-	std::cout << _contacts[_indx].nick_name;
+	std::cout << _contacts[_indx].get_nickname();
 	std::cout << "\" to phonebook at index ";
 	std::cout << _indx + 1 << "." << std::endl;
 	_indx++;

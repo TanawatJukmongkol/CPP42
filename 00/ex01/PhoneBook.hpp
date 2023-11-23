@@ -1,17 +1,17 @@
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef BOOK_HPP
+# define BOOK_HPP
 
 # include <cstdio>
 # include <sstream>
 # include "Contact.hpp"
 
-class PhoneBook {
+class Book {
 	private:
 		int		_indx;
 		Contact	_contacts[8];
 	public:
-		PhoneBook ();
+		Book ();
 
 		Contact	*get();
 		Contact	*get(int indx);

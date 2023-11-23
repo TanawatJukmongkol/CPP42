@@ -8,6 +8,8 @@ bool	isNumber (const char *str) {
 		indx++;
 	else if (str[0] == '+')
 		indx++;
+	if (!std::isdigit(str[indx]))
+		return false;
 	for (; str[indx]; indx++) {
 		if (!std::isdigit(str[indx]))
 		{
@@ -41,23 +43,27 @@ std::string trunc10wide (std::string str)
 	return s;
 }
 
-int add_user(PhoneBook *pb)
+int add_user(Book *pb)
 {
 	std::string	line;
 
-	std::cout << "- first name -\n> ";
+	std::cout << "- first name -" << std::endl;
+	std::cout << "> ";
 	if (!std::getline(std::cin, line))
 		return 0;
 	pb->set_fname(line);
-	std::cout << "- last name -\n> ";
+	std::cout << "- last name -" << std::endl;
+	std::cout << "> ";
 	if (!std::getline(std::cin, line))
 		return 0;
 	pb->set_lname(line);
-	std::cout << "- nick name -\n> ";
+	std::cout << "- nick name -" << std::endl;
+	std::cout << "> ";
 	if (!std::getline(std::cin, line))
 		return 0;
 	pb->set_nickname(line);
-	std::cout << "- phone number -\n> ";
+	std::cout << "- phone number -" << std::endl;
+	std::cout << "> ";
 	if (!std::getline(std::cin, line))
 		return 0;
 	if (isNumber(line.c_str()) && isdigit(line[0]))
@@ -77,7 +83,7 @@ int add_user(PhoneBook *pb)
 	return 0;
 }
 
-int	search(PhoneBook *pb)
+int	search(Book *pb)
 {
 	std::string	line;
 	int			nbr;
@@ -94,9 +100,9 @@ int	search(PhoneBook *pb)
 		st << i + 1;
 		st >> st_num;
 		std::cout << "|" << trunc10wide(st_num) << "|";
-		std::cout << trunc10wide(contact->first_name) << "|";
-		std::cout << trunc10wide(contact->last_name) << "|";
-		std::cout << trunc10wide(contact->nick_name) << "|";
+		std::cout << trunc10wide(contact->get_firstname()) << "|";
+		std::cout << trunc10wide(contact->get_lastname()) << "|";
+		std::cout << trunc10wide(contact->get_nickname()) << "|";
 		std::cout << std::endl;
 	}
 	std::cout << "== user to search (1 - 8, 0 to cancel) ==\n> ";
@@ -117,12 +123,12 @@ int	search(PhoneBook *pb)
 		return 1;
 	}
 	std::cout << "Phone number: ";
-	std::cout << contact->phone_nbr << std::endl;
+	std::cout << contact->get_phonenbr() << std::endl;
 	return 0;
 
 }
 
-void	repl(PhoneBook *pb) {
+void	repl(Book *pb) {
 	std::string	line;
 	int			mode = -1;
 
@@ -163,7 +169,7 @@ void	repl(PhoneBook *pb) {
 }
 
 int main () {
-	PhoneBook	pb;
+	Book	pb;
 
 	repl(&pb);
 	return 0;
