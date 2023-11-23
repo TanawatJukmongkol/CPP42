@@ -7,9 +7,6 @@
 # include "Contact.hpp"
 
 class Book {
-	private:
-		int		_indx;
-		Contact	_contacts[8];
 	public:
 		Book ();
 
@@ -22,6 +19,9 @@ class Book {
 		void	set_secret(std::string secret);
 
 		void	push();
+	private:
+		int		_indx;
+		Contact	_contacts[8];
 };
 
 #endif
