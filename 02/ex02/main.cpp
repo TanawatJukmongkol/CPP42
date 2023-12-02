@@ -6,7 +6,7 @@
 /*   By: tjukmong <tjukmong@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:15:24 by tjukmong          #+#    #+#             */
-/*   Updated: 2023/11/27 06:31:46 by Tanawat J.       ###   ########.fr       */
+/*   Updated: 2023/11/30 10:09:42 by Tanawat J.       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int main ()
 {
 	Fixed a;
-	Fixed const b ( Fixed(5.05f) * Fixed(2) );
+	Fixed res;
+	Fixed tmp(5.05f * 2);
+	Fixed const b ( tmp );
 
 	std::cout << a << std::endl;
 	std::cout << ++a << std::endl;

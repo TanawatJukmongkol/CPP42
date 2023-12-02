@@ -29,8 +29,8 @@ class Fixed
 		Fixed operator--();
 		Fixed operator--(int);
 
-		int		getRawBits();
-		void	setRawBits(int raw_bit);
+		int		getRawBits() const;
+		void	setRawBits(const int raw_bit);
 		int		toInt() const;
 		float	toFloat() const;
 		static Fixed	&min(Fixed &a, Fixed &b);

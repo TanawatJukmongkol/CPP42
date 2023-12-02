@@ -6,7 +6,7 @@
 /*   By: Tanawat J. <66011255@kmitl.ac.th>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 14:33:45 by Tanawat J.        #+#    #+#             */
-/*   Updated: 2023/11/27 00:00:08 by Tanawat J.       ###   ########.fr       */
+/*   Updated: 2023/11/30 10:15:00 by Tanawat J.       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ Fixed &Fixed::operator=(const Fixed &fixed)
 	return *this;
 }
 
-void Fixed::setRawBits(int raw_bit)
+void Fixed::setRawBits(const int raw_bit)
 {
 	std::cout << "Set raw bit" << std::endl;
 	raw_val = raw_bit;
 }
 
-int Fixed::getRawBits()
+int Fixed::getRawBits() const
 {
 	std::cout << "Get raw bit" << std::endl;
 	return raw_val;

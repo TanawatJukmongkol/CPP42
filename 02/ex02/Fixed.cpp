@@ -6,7 +6,7 @@
 /*   By: Tanawat J. <66011255@kmitl.ac.th>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 14:33:45 by Tanawat J.        #+#    #+#             */
-/*   Updated: 2023/11/27 06:36:30 by Tanawat J.       ###   ########.fr       */
+/*   Updated: 2023/11/30 10:21:06 by Tanawat J.       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,25 +88,29 @@ bool Fixed::operator!=(const Fixed &rhs) const
 Fixed Fixed::operator+(const Fixed &fixed) const
 {
 	std::cout << "Operator + called" << std::endl;
-	return Fixed(((raw_val + fixed.raw_val) / (float)(1 << frac_bit)) / precision);
+	Fixed tmp(((raw_val + fixed.raw_val) / (float)(1 << frac_bit)) / precision);
+	return tmp;
 }
 
 Fixed Fixed::operator-(const Fixed &fixed) const
 {
 	std::cout << "Operator - called" << std::endl;
-	return Fixed(((raw_val - fixed.raw_val) / (float)(1 << frac_bit)) / precision);
+	Fixed tmp(((raw_val - fixed.raw_val) / (float)(1 << frac_bit)) / precision);
+	return tmp;
 }
 
 Fixed Fixed::operator*(const Fixed &fixed) const
 {
 	std::cout << "Operator * called" << std::endl;
-	return Fixed(this->toFloat() * fixed.toFloat());
+	Fixed tmp(this->toFloat() * fixed.toFloat());
+	return tmp;
 }
 
 Fixed Fixed::operator/(const Fixed &fixed) const
 {
 	std::cout << "Operator / called" << std::endl;
-	return Fixed(this->toFloat() / fixed.toFloat());
+	Fixed tmp(this->toFloat() / fixed.toFloat());
+	return tmp;
 }
 
 Fixed Fixed::operator++()
@@ -147,13 +151,13 @@ std::ostream &operator<<(std::ostream &stdout, const Fixed &fixed)
 	return stdout;
 }
 
-void Fixed::setRawBits(int raw_bit)
+void Fixed::setRawBits(const int raw_bit)
 {
 	std::cout << "Set raw bit" << std::endl;
 	raw_val = raw_bit;
 }
 
-int Fixed::getRawBits()
+int Fixed::getRawBits() const
 {
 	std::cout << "Get raw bit" << std::endl;
 	return raw_val;

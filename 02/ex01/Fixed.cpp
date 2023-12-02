@@ -6,7 +6,7 @@
 /*   By: Tanawat J. <66011255@kmitl.ac.th>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 14:33:45 by Tanawat J.        #+#    #+#             */
-/*   Updated: 2023/11/26 23:59:15 by Tanawat J.       ###   ########.fr       */
+/*   Updated: 2023/11/30 10:19:45 by Tanawat J.       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ std::ostream &operator<<(std::ostream &stdout, const Fixed &fixed)
 	return stdout;
 }
 
-void Fixed::setRawBits(int raw_bit)
+void Fixed::setRawBits(const int raw_bit)
 {
 	std::cout << "Set raw bit" << std::endl;
 	raw_val = raw_bit;
 }
 
-int Fixed::getRawBits()
+int Fixed::getRawBits() const
 {
 	std::cout << "Get raw bit" << std::endl;
 	return raw_val;
