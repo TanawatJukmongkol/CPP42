@@ -1,15 +1,19 @@
 
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
+
 #include <iostream>
 
 class ClapTrap
 {
 	public:
+		ClapTrap();
 		ClapTrap(const std::string& name);
+		ClapTrap(const std::string& name, unsigned int hp, unsigned int energy, unsigned int atk_dmg);
 		~ClapTrap();
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
-		void init(unsigned int hp, unsigned int energy, unsigned int atk_dmg);
 
 	private:
 		std::string name;
@@ -18,5 +22,4 @@ class ClapTrap
 		unsigned int atk_dmg;
 };
 
-
-
+#endif

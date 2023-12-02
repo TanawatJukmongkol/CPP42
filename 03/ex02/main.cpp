@@ -14,8 +14,9 @@
 
 int main ()
 {
-	FragTrap	scav_1("Somsee");
-	FragTrap	scav_2("Somchai");
+	FragTrap	frag_1("Somsee");
+	FragTrap	frag_2("Somchai");
 
+	frag_1.highFivesGuys();
 	return 0;
 }

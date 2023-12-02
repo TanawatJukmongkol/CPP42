@@ -6,33 +6,42 @@
 /*   By: Tanawat J. <66011255@kmitl.ac.th>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 04:21:02 by Tanawat J.        #+#    #+#             */
-/*   Updated: 2023/11/28 15:02:01 by Tanawat J.       ###   ########.fr       */
+/*   Updated: 2023/11/28 15:02:38 by Tanawat J.       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap()
+{
+	this->hp = 10;
+	this->energy = 10;
+	this->atk_dmg = 0;
+}
+
 ClapTrap::ClapTrap(const std::string& trname)
 {
-	std::cout << "Clap trap " << trname << " constructor called." << std::endl;
-	if (name == trname)
-		return ;
-	name = trname;
-	this->init(10, 10, 0);
+	std::cout << "ClapTrap " << trname << " constructor called." << std::endl;
+	this->name = trname;
+	this->hp = 10;
+	this->energy = 10;
+	this->atk_dmg = 0;
 };
+
+ClapTrap::ClapTrap(const std::string& name, unsigned int hp, unsigned int energy, unsigned int atk_dmg)
+{
+	std::cout << "ClapTrap " << name << " constructor called." << std::endl;
+	this->name = name;
+	this->hp = hp;
+	this->energy = energy;
+	this->atk_dmg = atk_dmg;
+}
 
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap " << name << " destructor called." << std::endl;
 };
-
-void ClapTrap::init(unsigned int hp, unsigned int energy, unsigned int atk_dmg)
-{
-	this->hp = hp;
-	this->energy = energy;
-	this->atk_dmg = atk_dmg;
-}
 
 void ClapTrap::attack(const std::string& target)
 {

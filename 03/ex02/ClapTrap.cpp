@@ -13,26 +13,35 @@
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap()
+{
+	this->hp = 10;
+	this->energy = 10;
+	this->atk_dmg = 0;
+}
+
 ClapTrap::ClapTrap(const std::string& trname)
 {
-	std::cout << "Clap trap " << trname << " constructor called." << std::endl;
-	if (name == trname)
-		return ;
-	name = trname;
-	this->init(10, 10, 0);
+	std::cout << "ClapTrap " << trname << " constructor called." << std::endl;
+	this->name = trname;
+	this->hp = 10;
+	this->energy = 10;
+	this->atk_dmg = 0;
 };
+
+ClapTrap::ClapTrap(const std::string& name, unsigned int hp, unsigned int energy, unsigned int atk_dmg)
+{
+	std::cout << "ClapTrap " << name << " constructor called." << std::endl;
+	this->name = name;
+	this->hp = hp;
+	this->energy = energy;
+	this->atk_dmg = atk_dmg;
+}
 
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap " << name << " destructor called." << std::endl;
 };
-
-void ClapTrap::init(unsigned int hp, unsigned int energy, unsigned int atk_dmg)
-{
-	this->hp = hp;
-	this->energy = energy;
-	this->atk_dmg = atk_dmg;
-}
 
 void ClapTrap::attack(const std::string& target)
 {
