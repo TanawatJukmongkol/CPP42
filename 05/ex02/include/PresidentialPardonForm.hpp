@@ -11,7 +11,6 @@ class PresidentialPardonForm: public AForm
 		PresidentialPardonForm(PresidentialPardonForm const &copy);
 		PresidentialPardonForm(const std::string target);
 		PresidentialPardonForm &operator=(PresidentialPardonForm const &assignment);
-		friend std::ostream &operator<<(std::ostream &stream, const PresidentialPardonForm &insert);
 
 		virtual std::string		getName() const;
 		virtual unsigned int	getGradeAuth() const;
@@ -28,5 +27,7 @@ class PresidentialPardonForm: public AForm
 		const unsigned int	grade_exec = 5;
 		bool				is_signed;
 };
+
+std::ostream &operator<<(std::ostream &stream, const PresidentialPardonForm &insert);
 
 #endif

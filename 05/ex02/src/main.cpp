@@ -9,14 +9,15 @@ int main()
 {
 	try
 	{
-		Bureaucrat				personnel("Jhon", 25);
-		Bureaucrat				personnel2("Adam", 5);
+		//Bureaucrat				personnel("Jhon", 25);
+		Bureaucrat					personnel2("Adam", 5);
 		// ShrubberyCreationForm	document("top secret document");
 		// RobotomyRequestForm		document("top secret document");
-		PresidentialPardonForm		document("top secret document");
+		ShrubberyCreationForm		document("top secret document");
 		// AForm					abstract_form; // Cannot construct! :D
 
-		personnel.signForm(document);
+		personnel2.signForm(document);
+		// document.execute(personnel2);
 		personnel2.executeForm(document);
 	}
 	catch (std::exception & e)

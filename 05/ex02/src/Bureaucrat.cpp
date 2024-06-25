@@ -128,8 +128,7 @@ void	Bureaucrat::executeForm(AForm const &form)
 	}
 	catch (std::exception & e)
 	{
-		std::runtime_error exception( std::string("Exception: Bureaucrat: Execution failed.\nReason: ") + e.what() );
-		throw exception;
+		std::cerr << "Bureaucrat: " << e.what() << std::endl;
 	}
 }
 

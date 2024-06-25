@@ -11,7 +11,6 @@ class Bureaucrat
 		Bureaucrat(Bureaucrat const &copy);
 		Bureaucrat &operator=(Bureaucrat const &assignment);
 		Bureaucrat(const std::string name, unsigned int grade);
-		friend std::ostream &operator<<(std::ostream &stream, const Bureaucrat &insert);
 
 		std::string		getName() const;
 		unsigned int	getGrade() const;
@@ -25,5 +24,7 @@ class Bureaucrat
 		const std::string	name;
 		unsigned int 		grade;
 };
+
+std::ostream &operator<<(std::ostream &stream, const Bureaucrat &insert);
 
 #endif

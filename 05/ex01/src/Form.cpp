@@ -37,14 +37,11 @@ Form	&Form::operator=(Form const &assignment)
 std::ostream &operator<<(std::ostream &stream, const Form &insert)
 {
 	return stream << "Form \""
-				  << insert.name
+				  << insert.getName()
 				  << "\"; Authorization grade: "
-				  << insert.grade_auth
+				  << insert.getGradeAuth()
 				  << ", Execution grade: "
-				  << insert.grade_exec
-				  << " ("
-				  << (insert.is_signed ? "signed" : "unsigned")
-				  << ").";
+				  << insert.getGradeExec();
 }
 
 

@@ -11,7 +11,6 @@ class ShrubberyCreationForm: public AForm
 		ShrubberyCreationForm(ShrubberyCreationForm const &copy);
 		ShrubberyCreationForm(const std::string target);
 		ShrubberyCreationForm &operator=(ShrubberyCreationForm const &assignment);
-		friend std::ostream &operator<<(std::ostream &stream, const ShrubberyCreationForm &insert);
 
 		virtual std::string		getName() const;
 		virtual unsigned int	getGradeAuth() const;
@@ -28,5 +27,7 @@ class ShrubberyCreationForm: public AForm
 		const unsigned int	grade_exec = 135;
 		bool				is_signed;
 };
+
+std::ostream &operator<<(std::ostream &stream, const ShrubberyCreationForm &insert);
 
 #endif
