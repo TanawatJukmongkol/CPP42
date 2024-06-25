@@ -1,0 +1,9 @@
+*
+!*/
+!.gitignore
+!Makefile
+!src/main.cpp
+!src/Bureaucrat.cpp
+!src/Form.cpp
+!include/Bureaucrat.hpp
+!include/Form.hpp

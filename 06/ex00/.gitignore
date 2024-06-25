@@ -1,0 +1,7 @@
+*
+!*/
+!.gitignore
+!Makefile
+!src/main.cpp
+!src/ScalarConverter.cpp
+!include/ScalarConverter.hpp

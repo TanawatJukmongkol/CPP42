@@ -1,0 +1,15 @@
+*
+!*/
+!.gitignore
+!Makefile
+!src/main.cpp
+!src/Bureaucrat.cpp
+!src/AForm.cpp
+!src/ShrubberyCreationForm.cpp
+!src/RobotomyRequestForm.cpp
+!src/PresidentialPardonForm.cpp
+!include/Bureaucrat.hpp
+!include/AForm.hpp
+!include/ShrubberyCreationForm.hpp
+!include/RobotomyRequestForm.hpp
+!include/PresidentialPardonForm.hpp

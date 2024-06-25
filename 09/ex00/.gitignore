@@ -1,0 +1,7 @@
+*
+!*/
+!.gitignore
+!Makefile
+!src/main.cpp
+!src/BitcoinExchange.cpp
+!include/BitcoinExchange.hpp

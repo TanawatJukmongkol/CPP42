@@ -1,0 +1,6 @@
+*
+!*/
+!.gitignore
+!Makefile
+!src/main.cpp
+!include/whatever.hpp
