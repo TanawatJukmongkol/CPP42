@@ -2,7 +2,7 @@
 #include "../include/Bureaucrat.hpp"
 #include <iostream>
 
-Form::Form(const std::string name, const unsigned int grade_auth, const unsigned int grade_exec)
+Form::Form(const std::string name, const int grade_auth, const int grade_exec)
 	: name(name)
 	, grade_auth(grade_auth)
 	, grade_exec(grade_exec)
@@ -37,11 +37,14 @@ Form	&Form::operator=(Form const &assignment)
 std::ostream &operator<<(std::ostream &stream, const Form &insert)
 {
 	return stream << "Form \""
-				  << insert.getName()
+				  << insert.name
 				  << "\"; Authorization grade: "
-				  << insert.getGradeAuth()
+				  << insert.grade_auth
 				  << ", Execution grade: "
-				  << insert.getGradeExec();
+				  << insert.grade_exec
+				  << " ("
+				  << (insert.is_signed ? "signed" : "unsigned")
+				  << ").";
 }
 
 

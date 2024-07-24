@@ -8,7 +8,7 @@ Bureaucrat::Bureaucrat()
 	std::cout << "Empty bureaucrat created. (useless)" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name, unsigned int grade): name(name)
+Bureaucrat::Bureaucrat(const std::string name, int grade): name(name)
 {
 	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
@@ -128,7 +128,8 @@ void	Bureaucrat::executeForm(AForm const &form)
 	}
 	catch (std::exception & e)
 	{
-		std::cerr << "Bureaucrat: " << e.what() << std::endl;
+		std::runtime_error exception( std::string("Exception: Bureaucrat: Execution failed.\nReason: ") + e.what() );
+		throw exception;
 	}
 }
 

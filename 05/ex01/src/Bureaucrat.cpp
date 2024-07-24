@@ -9,7 +9,7 @@ Bureaucrat::Bureaucrat()
 	std::cout << "Empty bureaucrat created. (useless)" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name, unsigned int grade): name(name)
+Bureaucrat::Bureaucrat(const std::string name, int grade): name(name)
 {
 	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();

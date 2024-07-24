@@ -8,7 +8,7 @@ Bureaucrat::Bureaucrat()
 	std::cout << "Empty bureaucrat created. (useless)" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name, unsigned int grade): name(name)
+Bureaucrat::Bureaucrat(const std::string name, int grade): name(name)
 {
 	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
@@ -73,14 +73,16 @@ std::string	Bureaucrat::getName() const
 	return this->name;
 }
 
-unsigned int	Bureaucrat::getGrade() const
+int	Bureaucrat::getGrade() const
 {
 	return this->grade;
 }
 
-void	Bureaucrat::promote(unsigned int rank)
+void	Bureaucrat::promote(int rank)
 {
-	if (this->grade - rank < 1)
+	if (rank < 0)
+		throw GradeTooLowException();
+	if (rank > this->grade)
 		throw GradeTooHighException();
 	this->grade -= rank;
 	std::cout << "Bureaucrat \""
@@ -90,7 +92,7 @@ void	Bureaucrat::promote(unsigned int rank)
 			  << "!" << std::endl;
 }
 
-void	Bureaucrat::demote(unsigned int rank)
+void	Bureaucrat::demote(int rank)
 {
 	if (this->grade + rank > 150)
 		throw GradeTooLowException();

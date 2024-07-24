@@ -33,11 +33,14 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm const &a
 std::ostream &operator<<(std::ostream &stream, const RobotomyRequestForm &insert)
 {
 	return stream << "RobotomyRequestForm \""
-				  << insert.getName()
+				  << insert.name
 				  << "\"; Authorization grade: "
-				  << insert.getGradeAuth()
+				  << insert.grade_auth
 				  << ", Execution grade: "
-				  << insert.getGradeExec();
+				  << insert.grade_exec
+				  << " ("
+				  << (insert.is_signed ? "signed" : "unsigned")
+				  << ").";
 }
 
 std::string	RobotomyRequestForm::getName() const
@@ -77,25 +80,26 @@ void	RobotomyRequestForm::beSigned(Bureaucrat &personnel)
 
 void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-	srand(time(0));
-	if (!is_signed)
-		throw std::runtime_error(
-				std::string("RobotomyRequestForm: ")
-				+ name
-				+ std::string(" was not signed."));
-	if (executor.getGrade() > grade_exec)
-		throw RobotomyRequestForm::GradeTooLowException();
-	std::cout << "RobotomyRequestForm executed by "
-		<< executor.getName()
-		<< "! Bzzzzzz!!!!!" << std::endl;
-	if (rand() % 10 < 5)
-		std::cerr << "Target "
-				  << name
-				  << " failed to robotomize." << std::endl;
+	srand(time(0)); 
+	if (executor.getGrade() <= grade_exec)
+	{
+		std::cout << "RobotomyRequestForm executed by "
+			<< executor.getName()
+			<< "! Bzzzzzz!!!!!" << std::endl;
+		if (rand() % 10 < 5)
+		{
+			std::cerr << "Target "
+					  << name
+					  << " failed to robotomize." << std::endl;
+		}
+		else {
+			std::cout << "Target "
+					  << name
+					  << " has been robotomized successfully." << std::endl;
+		}
+	}
 	else
-		std::cout << "Target "
-				  << name
-				  << " has been robotomized successfully." << std::endl;
+		throw RobotomyRequestForm::GradeTooLowException();
 }
 
 std::exception	RobotomyRequestForm::GradeTooHighException()

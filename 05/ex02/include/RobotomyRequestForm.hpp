@@ -11,6 +11,7 @@ class RobotomyRequestForm: public AForm
 		RobotomyRequestForm(RobotomyRequestForm const &copy);
 		RobotomyRequestForm(const std::string target);
 		RobotomyRequestForm &operator=(RobotomyRequestForm const &assignment);
+		friend std::ostream &operator<<(std::ostream &stream, const RobotomyRequestForm &insert);
 
 		virtual std::string		getName() const;
 		virtual unsigned int	getGradeAuth() const;
@@ -27,7 +28,5 @@ class RobotomyRequestForm: public AForm
 		const unsigned int	grade_exec = 45;
 		bool				is_signed;
 };
-
-std::ostream &operator<<(std::ostream &stream, const RobotomyRequestForm &insert);
 
 #endif

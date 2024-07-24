@@ -32,11 +32,14 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(PresidentialPardonForm
 std::ostream &operator<<(std::ostream &stream, const PresidentialPardonForm &insert)
 {
 	return stream << "PresidentialPardonForm \""
-				  << insert.getName()
+				  << insert.name
 				  << "\"; Authorization grade: "
-				  << insert.getGradeAuth()
+				  << insert.grade_auth
 				  << ", Execution grade: "
-				  << insert.getGradeExec();
+				  << insert.grade_exec
+				  << " ("
+				  << (insert.is_signed ? "signed" : "unsigned")
+				  << ").";
 }
 
 std::string	PresidentialPardonForm::getName() const
@@ -57,7 +60,12 @@ unsigned int	PresidentialPardonForm::getGradeExec() const
 void	PresidentialPardonForm::beSigned(Bureaucrat &personnel)
 {
 	if (this->is_signed)
+	{
+		std::cout << "Warn: PresidentialPardonForm \""
+				  << this->name
+				  << "\" is already signed." << std::endl;
 		return ;
+	}
 	if (personnel.getGrade() <= grade_auth)
 	{
 		is_signed = true;
@@ -72,16 +80,13 @@ void	PresidentialPardonForm::beSigned(Bureaucrat &personnel)
 void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
 	std::ofstream file;
-
-	if (!is_signed)
-		throw std::runtime_error(
-				std::string("PresidentialForm: ")
-				+ name
-				+ std::string(" was not signed."));
-	if (executor.getGrade() > grade_exec)
+	if (executor.getGrade() <= grade_exec)
+	{
+		std::cout << name
+				  << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+	}
+	else
 		throw PresidentialPardonForm::GradeTooLowException();
-	std::cout << name
-			  << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
 
 std::exception	PresidentialPardonForm::GradeTooHighException()

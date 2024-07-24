@@ -31,11 +31,14 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 std::ostream &operator<<(std::ostream &stream, const ShrubberyCreationForm &insert)
 {
 	return stream << "ShrubberyCreationForm \""
-				  << insert.getName()
+				  << insert.name
 				  << "\"; Authorization grade: "
-				  << insert.getGradeAuth()
+				  << insert.grade_auth
 				  << ", Execution grade: "
-				  << insert.getGradeExec();
+				  << insert.grade_exec
+				  << " ("
+				  << (insert.is_signed ? "signed" : "unsigned")
+				  << ").";
 }
 
 std::string	ShrubberyCreationForm::getName() const
@@ -76,36 +79,31 @@ void	ShrubberyCreationForm::beSigned(Bureaucrat &personnel)
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	std::ofstream file;
-	if (!is_signed)
-		throw std::runtime_error(
-				std::string("ShrubberyCreationForm: ")
-				+ name
-				+ std::string(" was not signed."));
-	if (executor.getGrade() > grade_exec)
+	if (executor.getGrade() <= grade_exec)
+	{
+		std::cout << "ShrubberyCreationForm executed by "
+			<< executor.getName()
+			<< "! Creating a file..." << std::endl;
+		file.open(name + "_shrubbery");
+		if (!file.good())
+			throw std::runtime_error("Exception: ShrubberyCreationForm: Failed to open file stream.");
+		file << "          &&& &&  & &&\n"
+			 << "      && &\\/&\\|& ()|/ @, &&\n"
+			 << "      &\\/(/&/&||/& /_/)_&/_&\n"
+			 << "   &() &\\/&|()|/&\\/ '%\" & ()\n"
+			 << "  &_\\_&&_\\ |& |&&/&__%_/_& &&\n"
+			 << "&&   && & &| &| /& & % ()& /&&\n"
+			 << " ()&_---()&\\&\\|&&-&&--%---()~\n"
+			 << "     &&     \\|||\n"
+			 << "             |||\n"
+			 << "             |||\n"
+			 << "             |||\n"
+			 << "       , -=-~  .-^- _\n"
+			 << "              `" << std::endl;
+		file.close();
+	}
+	else
 		throw ShrubberyCreationForm::GradeTooLowException();
-	std::cout << "ShrubberyCreationForm executed by "
-		<< executor.getName()
-		<< "! Creating a file..." << std::endl;
-	file.open(name + "_shrubbery");
-	if (!file.good())
-		throw std::runtime_error(
-				std::string("ShrubberyCreationForm: ")
-				+ name
-				+ std::string(" Failed to open file stream."));
-	file << "          &&& &&  & &&\n"
-		 << "      && &\\/&\\|& ()|/ @, &&\n"
-		 << "      &\\/(/&/&||/& /_/)_&/_&\n"
-		 << "   &() &\\/&|()|/&\\/ '%\" & ()\n"
-		 << "  &_\\_&&_\\ |& |&&/&__%_/_& &&\n"
-		 << "&&   && & &| &| /& & % ()& /&&\n"
-		 << " ()&_---()&\\&\\|&&-&&--%---()~\n"
-		 << "     &&     \\|||\n"
-		 << "             |||\n"
-		 << "             |||\n"
-		 << "             |||\n"
-		 << "       , -=-~  .-^- _\n"
-		 << "              `" << std::endl;
-	file.close();
 }
 
 std::exception	ShrubberyCreationForm::GradeTooHighException()

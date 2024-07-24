@@ -9,7 +9,8 @@ class Form
 		~Form();
 		Form(Form const &copy);
 		Form &operator=(Form const &assignment);
-		Form(const std::string name, const unsigned int grade_auth, const unsigned int grade_exec);
+		Form(const std::string name, const int grade_auth, const int grade_exec);
+		friend std::ostream &operator<<(std::ostream &stream, const Form &insert);
 
 		std::string		getName() const;
 		unsigned int	getGradeAuth() const;
@@ -25,7 +26,5 @@ class Form
 		const unsigned int	grade_exec;
 		bool				is_signed;
 };
-
-std::ostream &operator<<(std::ostream &stream, const Form &insert);
 
 #endif
