@@ -21,7 +21,8 @@ CXXFLAGS		= $(CXXFLAGS_DEV) \
 				  -Wextra \
 				  -std=c++98
 
-CXXFLAGS_DEV	= -g
+CXXFLAGS_DEV	= -g \
+				  -pedantic
 
 INCLUDES		=
 INCLUDES_SRC	= $(INCLUDES)

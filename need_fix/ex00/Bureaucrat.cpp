@@ -83,7 +83,7 @@ void	Bureaucrat::promote(int rank)
 	if (rank < 0)
 		rank *= -1;
 	if (rank > 150 || this->grade - rank < 1)
-		throw Bureaucrat::GradeTooHighException();
+		throw GradeTooHighException();
 	this->grade -= rank;
 	std::cout << "Bureaucrat \""
 			  << name
@@ -108,14 +108,12 @@ void	Bureaucrat::demote(int rank)
 
 /**	Exception **/
 
-std::exception	Bureaucrat::GradeTooHighException()
+const char *Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-	std::invalid_argument exception( "Exception: Bureaucrat: Grade too high! (possible range 1 - 150)." );
-	throw exception;
+	return "Exception: Bureaucrat: Grade too high! (possible range 1 - 150).";
 }
 
-std::exception	Bureaucrat::GradeTooLowException()
+const char *Bureaucrat::GradeTooLowException::what(void) const throw()
 {
-	std::invalid_argument exception( "Exception: Bureaucrat: Grade too low! (possible range 1 - 150)." );
-	throw exception;
+	return "Exception: Bureaucrat: Grade too low! (possible range 1 - 150).";
 }

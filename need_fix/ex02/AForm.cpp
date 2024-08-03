@@ -44,7 +44,6 @@ std::ostream &operator<<(std::ostream &stream, const AForm &insert)
 				  << insert.getGradeExec();
 }
 
-
 std::string	AForm::getName() const
 {
 	return this->name;
@@ -86,14 +85,12 @@ void	execute(Bureaucrat const &executor)
 	std::cout << "AForm executed." << std::endl;
 }
 
-std::exception	AForm::GradeTooHighException()
+const char *AForm::GradeTooHighException::what(void) const throw()
 {
-	std::invalid_argument exception( "Exception: AForm: Grade too high! (possible range 1 - 150)." );
-	throw exception;
+	return "Exception: Form: Grade too high!";
 }
 
-std::exception	AForm::GradeTooLowException()
+const char *AForm::GradeTooLowException::what(void) const throw()
 {
-	std::invalid_argument exception( "Exception: AForm: Grade too low! (has to be higher than authentication / execution grade)." );
-	throw exception;
+	return "Exception: Form: Grade too low!";
 }

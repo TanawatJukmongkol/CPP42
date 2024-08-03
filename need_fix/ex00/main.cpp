@@ -14,7 +14,7 @@ int main()
 		// john.demote(1);
 
 		/** ERROR!! **/
-		// jhon.promote(1);s
+		// john.promote(1);
 		// tony.demote(1);
 
 		// Bureaucrat evil_john("Tony", -1);

@@ -89,14 +89,3 @@ void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 			  << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
 
-std::exception	PresidentialPardonForm::GradeTooHighException()
-{
-	std::invalid_argument exception( "Exception: PresidentialPardonForm: Grade too high! (possible range 1 - 150)." );
-	throw exception;
-}
-
-std::exception	PresidentialPardonForm::GradeTooLowException()
-{
-	std::invalid_argument exception( "Exception: PresidentialPardonForm: Grade too low! (has to be higher than authentication / execution grade)." );
-	throw exception;
-}

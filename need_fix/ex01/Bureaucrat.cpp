@@ -123,14 +123,13 @@ void	Bureaucrat::signForm(Form &Form)
 
 /**	Exception **/
 
-std::exception	Bureaucrat::GradeTooHighException()
+const char *Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-	std::invalid_argument exception( "Exception: Bureaucrat: Grade too high! (possible range 1 - 150)." );
-	throw exception;
+	return "Exception: Bureaucrat: Grade too high! (possible range 1 - 150).";
 }
 
-std::exception	Bureaucrat::GradeTooLowException()
+const char *Bureaucrat::GradeTooLowException::what(void) const throw()
 {
-	std::invalid_argument exception( "Exception: Bureaucrat: Grade too low! (possible range 1 - 150)." );
-	throw exception;
+	return "Exception: Bureaucrat: Grade too low! (possible range 1 - 150).";
 }
+

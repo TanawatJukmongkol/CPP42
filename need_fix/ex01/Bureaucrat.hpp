@@ -19,8 +19,16 @@ class Bureaucrat
 		void			demote(int rank);
 		void			signForm(Form &Form);
 
-		static std::exception	GradeTooHighException();
-		static std::exception	GradeTooLowException();
+		class	GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+		class	GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
 
 	private:
 		const std::string	name;

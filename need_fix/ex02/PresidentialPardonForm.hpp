@@ -18,9 +18,6 @@ class PresidentialPardonForm: public AForm
 		virtual void			beSigned(class Bureaucrat &personnel);
 		virtual void			execute(Bureaucrat const &executor) const;
 
-		static std::exception	GradeTooHighException();
-		static std::exception	GradeTooLowException();
-
 	private:
 		const std::string	name; // target
 		const int			grade_auth;

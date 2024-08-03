@@ -13,13 +13,10 @@ class RobotomyRequestForm: public AForm
 		RobotomyRequestForm &operator=(RobotomyRequestForm const &assignment);
 
 		virtual std::string		getName() const;
-		virtual int	getGradeAuth() const;
-		virtual int	getGradeExec() const;
+		virtual int				getGradeAuth() const;
+		virtual int				getGradeExec() const;
 		virtual void			beSigned(class Bureaucrat &personnel);
 		virtual void			execute(Bureaucrat const &executor) const;
-
-		static std::exception	GradeTooHighException();
-		static std::exception	GradeTooLowException();
 
 	private:
 		const std::string	name; // target

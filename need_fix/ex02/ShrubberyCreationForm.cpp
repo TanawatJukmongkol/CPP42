@@ -113,14 +113,3 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	file.close();
 }
 
-std::exception	ShrubberyCreationForm::GradeTooHighException()
-{
-	std::invalid_argument exception( "Exception: ShrubberyCreationForm: Grade too high! (possible range 1 - 150)." );
-	throw exception;
-}
-
-std::exception	ShrubberyCreationForm::GradeTooLowException()
-{
-	std::invalid_argument exception( "Exception: ShrubberyCreationForm: Grade too low! (has to be higher than authentication / execution grade)." );
-	throw exception;
-}

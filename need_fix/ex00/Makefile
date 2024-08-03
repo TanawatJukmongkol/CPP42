@@ -21,7 +21,6 @@ CXXFLAGS		= $(CXXFLAGS_DEV) \
 				  -std=c++98
 
 CXXFLAGS_DEV	= -g \
-				  -std=c++98 \
 				  -pedantic
 
 INCLUDES		=

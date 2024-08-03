@@ -102,14 +102,3 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 				  << " has been robotomized successfully." << std::endl;
 }
 
-std::exception	RobotomyRequestForm::GradeTooHighException()
-{
-	std::invalid_argument exception( "Exception: RobotomyRequestForm: Grade too high! (possible range 1 - 150)." );
-	throw exception;
-}
-
-std::exception	RobotomyRequestForm::GradeTooLowException()
-{
-	std::invalid_argument exception( "Exception: RobotomyRequestForm: Grade too low! (has to be higher than authentication / execution grade)." );
-	throw exception;
-}

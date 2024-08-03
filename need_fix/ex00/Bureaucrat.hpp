@@ -17,8 +17,16 @@ class Bureaucrat
 		void			promote(int rank);
 		void			demote(int rank);
 
-		static std::exception	GradeTooHighException();
-		static std::exception	GradeTooLowException();
+		class	GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+		class	GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
 
 	private:
 		const std::string	name;
