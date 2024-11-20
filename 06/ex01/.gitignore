@@ -5,3 +5,4 @@
 !src/main.cpp
 !src/Serializer.cpp
 !include/Serializer.hpp
+!include/DataStruct.hpp
