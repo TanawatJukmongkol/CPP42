@@ -1,0 +1,7 @@
+*
+!*/
+!.gitignore
+!Makefile
+!src/main.cpp
+!src/MutantStack.cpp
+!include/MutantStack.hpp

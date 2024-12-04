@@ -1,12 +1,12 @@
 # Basic configs
-NAME			= PmergeMe
+NAME			= cpp-module
 CXX				= c++
 
 # Sources and headers
 SRCS			= main.cpp \
-				  PmergeMe.cpp
+				  MutantStack.cpp
 
-HEADERS			= PmergeMe.hpp
+HEADERS			= MutantStack.hpp
 
 # Path configuration
 SRC_DIR			= src
