@@ -3,8 +3,7 @@ NAME			= cpp-module
 CXX				= c++
 
 # Sources and headers
-SRCS			= main.cpp \
-				  MutantStack.cpp
+SRCS			= main.cpp
 
 HEADERS			= MutantStack.hpp
 

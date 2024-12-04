@@ -18,5 +18,6 @@ MutantStack::MutantStack(MutantStack const &copy)
 
 MutantStack	&MutantStack::operator=(MutantStack const &assignment)
 {
+	(void)assignment;
 	return *this;
 }
