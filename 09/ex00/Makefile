@@ -9,9 +9,9 @@ SRCS			= main.cpp \
 HEADERS			= BitcoinExchange.hpp
 
 # Path configuration
-SRC_DIR			= src
+SRC_DIR			= .
 BUILD_DIR		= build
-HEADER_DIR		= include
+HEADER_DIR		= .
 
 # Flags and library linking
 CXXFLAGS		= $(CXXFLAGS_DEV) \

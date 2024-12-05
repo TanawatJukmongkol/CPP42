@@ -1,4 +1,4 @@
-#include "../include/RPN.hpp"
+#include "RPN.hpp"
 #include <cctype>
 #include <cstdlib>
 #include <stdexcept>
@@ -46,6 +46,7 @@ void	operands_exec(char expr, std::stack<int> &_le_stack)
 		break;
 		case '/':
 			tmp = _le_stack.top();
+			if (tmp == 0) throw RPN::invalidExpr();
 			_le_stack.pop();
 			_le_stack.top() /= tmp;
 		break;

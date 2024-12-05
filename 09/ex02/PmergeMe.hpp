@@ -124,7 +124,7 @@ size_t	binary_insert(T &stl, int val)
 		mid = min;
 		std::advance(mid, size);
 		compares++;
-		if (val >= *mid)
+		if (val > *mid)
 		{
 			min = mid;
 			std::advance(min, 1);
@@ -167,9 +167,16 @@ PmergeMe	&PmergeMe::mergeInsert(T &stack)
 
 	::stack_split(stack, stack2);
 
+	// std::cout << "---" << std::endl;
+	// ::print_int_stl(stack, 10);
+	// ::print_int_stl(stack2, 10);
+
 	swaps = stack_swap_max(stack, stack2);
 	__swaps = swaps;
 	PmergeMe sorted = mergeInsert(stack);
+
+	// std::cout << ">> ";
+	// ::print_int_stl(stack, 10);
 
 	__swaps = 0;
 	__inserts = 0;
@@ -178,6 +185,10 @@ PmergeMe	&PmergeMe::mergeInsert(T &stack)
 
 	while (stack2.size())
 	{
+		// std::cout << "-> ";
+		// ::print_int_stl(stack, 10);
+		// std::cout << "   ";
+		// ::print_int_stl(stack2, 10);
 		__comps = ::binary_insert(stack, *stack2.begin());
 		__inserts++;
 		stack2.pop_front();

@@ -9,9 +9,9 @@ SRCS			= main.cpp \
 HEADERS			= PmergeMe.hpp
 
 # Path configuration
-SRC_DIR			= src
+SRC_DIR			= .
 BUILD_DIR		= build
-HEADER_DIR		= include
+HEADER_DIR		= .
 
 # Flags and library linking
 CXXFLAGS		= $(CXXFLAGS_DEV) \
@@ -39,7 +39,7 @@ SPACE := $(subst ,, )
 
 all: $(NAME)
 
-$(NAME): .gitignore $(BUILD_DIR) $(SRC) $(OBJ)
+$(NAME): $(BUILD_DIR) $(SRC) $(OBJ)
 	@ echo "LD $(NAME)"
 	@ $(CXX) -o $(NAME) $(OBJ) $(INCLUDES_SRC) $(CXXFLAGS)
 
@@ -88,13 +88,5 @@ re: clean all
 $(BUILD_DIR)/%.o:$(SRC_DIR)/%.cpp $(HEADER) Makefile
 	@ echo "CXX $<"
 	@ $(CXX) $(CXXFLAGS) $(INCLUDES_OBJ) -c $< -o $@
-
-.gitignore: Makefile
-	@ echo "Generate .gitignore..."
-	@ echo -ne "*\n!*/\n!.gitignore\n!Makefile\n" > .gitignore
-	@ echo -ne "$(subst $(SPACE),\n,$(addprefix !,${SRC}))\n" >> .gitignore
-	@ echo -ne "$(subst $(SPACE),\n,$(addprefix !,${HEADER}))\n" >> .gitignore
-	@ echo "Rebuild tracked files cache..."
-	@ git rm -rf --cached . > /dev/null && git add .
 
 .PHONY: all clean fclean re %.class

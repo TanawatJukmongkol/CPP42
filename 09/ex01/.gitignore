@@ -1,7 +1,0 @@
-*
-!*/
-!.gitignore
-!Makefile
-!src/main.cpp
-!src/RPN.cpp
-!include/RPN.hpp

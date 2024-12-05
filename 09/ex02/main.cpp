@@ -1,4 +1,4 @@
-#include "../include/PmergeMe.hpp"
+#include "PmergeMe.hpp"
 #include <list>
 #include <deque>
 #include <iostream>
@@ -16,6 +16,22 @@ int main (int argc, char **argv)
 	{
 		std::cerr << "Not enough argment." << std::endl;
 		return 1;
+	}
+
+	for (size_t i = 1; argv[i] != NULL; i++)
+	{
+		if (argv[i][0] == '\0')
+		{
+			std::cerr << "Invalid parameter." << std::endl;
+			return 1;
+		}
+		for (size_t j = 0; argv[i][j] != '\0'; j++)
+		{
+			if (argv[i][j] >= '0' && argv[i][j] <= '9')
+				continue ;
+			std::cerr << "Invalid parameter." << std::endl;
+			return 1;
+		}
 	}
 
 	::fill_char_array_to_int_stl(lst, argv, argc - 1);
@@ -36,12 +52,8 @@ int main (int argc, char **argv)
 	merge_insert.sort(que);
 
 	std::cout << "Time to process a range of \t" << argc - 1
-			  << " elements with std::deque : " << merge_insert.getTimeMs()
-			  << " us" << std::endl;
+			<< " elements with std::deque : " << merge_insert.getTimeMs()
+			<< " us" << std::endl;
 
-	std::cout << "Compares : " << merge_insert.getComps() << std::endl
-			  << "Swaps    : " << merge_insert.getSwaps() << std::endl
-			  << "Inserts  : " << merge_insert.getInserts() << std::endl;
-	
 	return 0;
 }
